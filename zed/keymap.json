@@ -1,0 +1,64 @@
+[
+  {
+    "context": "Editor",
+    "bindings": {
+      "pageup": "editor::MovePageUp",
+      "pagedown": "editor::MovePageDown",
+      "cmd-shift-s": "workspace::SaveAll"
+    }
+  },
+  {
+    "context": "Editor && showing_completions",
+    "bindings": {
+      "enter": "editor::ConfirmCompletion",
+      "shift-tab": "editor::ContextMenuPrev",
+      "tab": "editor::ContextMenuNext"
+    }
+  },
+  {
+    "context": "Editor && (vim_mode == normal || vim_mode == visual) && !VimWaiting && !menu",
+    "bindings": {
+      // centre cursor after moving and only 10 lines instead of half page
+      "ctrl-d": ["workspace::SendKeystrokes", "1 0 j z z"],
+      "ctrl-u": ["workspace::SendKeystrokes", "1 0 k z z"],
+      "pagedown": ["workspace::SendKeystrokes", "2 0 j z z"],
+      "pageup": ["workspace::SendKeystrokes", "2 0 k z z"]
+    }
+  },
+  {
+    "context": "ProjectSearchView",
+    "bindings": {
+      "n": "search::ToggleReplace",
+      "shift-n": "search::ToggleReplace"
+    }
+  },
+  {
+    "context": "!EasyMotionControlled && (Editor && VimControl && !VimWaiting && !menu)",
+    "bindings": {
+      "g f": "file_finder::Toggle",
+      "g r": "editor::FindAllReferences"
+    }
+  },
+  // switch these bindings because I use cmd-] more often
+  {
+    "context": "Editor",
+    "bindings": {
+      "cmd-[": "pane::ActivatePrevItem",
+      "cmd-]": "pane::ActivateNextItem"
+    }
+  },
+  {
+    "context": "Pane",
+    "bindings": {
+      "cmd-{": "editor::Outdent",
+      "cmd-}": "editor::Indent"
+    }
+  },
+  {
+    "context": "Editor && VimControl && !VimWaiting && !menu",
+    "bindings": {
+      "ctrl-w v": "pane::SplitRight",
+      "ctrl-w ctrl-v": "pane::SplitRight"
+    }
+  }
+]

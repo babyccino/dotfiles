@@ -1,0 +1,6 @@
+# mac files
+**/*.DS_Store
+
+# zed
+zed/embeddings
+zed/prompts

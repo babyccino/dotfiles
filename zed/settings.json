@@ -7,7 +7,7 @@
 // from the command palette or from `Zed` application menu.
 {
   "assistant": {
-    "version": "1",
+    "version": "2",
     "button": false
   },
   "git": {

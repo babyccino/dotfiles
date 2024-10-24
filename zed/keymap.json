@@ -60,5 +60,11 @@
       "ctrl-w v": "pane::SplitRight",
       "ctrl-w ctrl-v": "pane::SplitRight"
     }
+  },
+  {
+    "context": "VimControl && !menu",
+    "bindings": {
+      "/": ["vim::Search", { "regex": false }]
+    }
   }
 ]

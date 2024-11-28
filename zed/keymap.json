@@ -66,5 +66,12 @@
     "bindings": {
       "/": ["vim::Search", { "regex": false }]
     }
+  },
+  {
+    "context": "vim_mode == visual",
+    "bindings": {
+      "[": "editor::SelectLargerSyntaxNode",
+      "]": "editor::SelectSmallerSyntaxNode"
+    }
   }
 ]

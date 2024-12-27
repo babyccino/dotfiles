@@ -57,17 +57,18 @@
       }
     },
     "Go": {
-      // "format_on_save": {
-      //   "external": {
-      //     "command": "gofmt",
-      //     "arguments": ["-s", "-w", "{buffer_path}"]
-      //   }
-      // },
-      "formatter": null
+      "format_on_save": {
+        "external": {
+          "command": "gofmt",
+          "arguments": ["-s", "-w", "{buffer_path}"]
+        }
+      }
     }
   },
-  "formatter": "prettier",
-  "buffer_font_family": "Menlo",
+  "buffer_font_family": "Hack FC Ligatured",
+  "buffer_font_features": {
+    "calt": true
+  },
   "ui_font_family": "SF Pro",
   "lsp": {
     "gopls": {

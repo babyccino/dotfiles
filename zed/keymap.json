@@ -5,8 +5,8 @@
       "pageup": "editor::MovePageUp",
       "pagedown": "editor::MovePageDown",
       "cmd-shift-s": "workspace::SaveAll",
-      "ctrl-j": "editor::AddSelectionBelow",
-      "ctrl-k": "editor::AddSelectionAbove",
+      "alt-j": "editor::AddSelectionBelow",
+      "alt-k": "editor::AddSelectionAbove",
       "cmd-f": "project_panel::ToggleFocus"
     }
   },
@@ -35,8 +35,10 @@
     "context": "VimControl && !menu",
     "bindings": {
       // centre cursor after moving and only 10 lines instead of half page
-      "ctrl-d": ["workspace::SendKeystrokes", "1 0 j z z"],
-      "ctrl-u": ["workspace::SendKeystrokes", "1 0 k z z"],
+      "ctrl-k": ["workspace::SendKeystrokes", "1 0 k z z"],
+      "ctrl-j": ["workspace::SendKeystrokes", "1 0 j z z"],
+      "ctrl-u": ["workspace::SendKeystrokes", "2 0 k z z"],
+      "ctrl-d": ["workspace::SendKeystrokes", "2 0 j z z"],
       "pagedown": ["workspace::SendKeystrokes", "2 0 j z z"],
       "pageup": ["workspace::SendKeystrokes", "2 0 k z z"],
       "shift-k shift-w": ["pane::CloseAllItems", { "saveIntent": "skip" }]

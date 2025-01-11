@@ -4,7 +4,10 @@
     "bindings": {
       "pageup": "editor::MovePageUp",
       "pagedown": "editor::MovePageDown",
-      "cmd-shift-s": "workspace::SaveAll"
+      "cmd-shift-s": "workspace::SaveAll",
+      "ctrl-j": "editor::AddSelectionBelow",
+      "ctrl-k": "editor::AddSelectionAbove",
+      "cmd-f": "project_panel::ToggleFocus"
     }
   },
   {
@@ -16,13 +19,27 @@
     }
   },
   {
-    "context": "Editor && (vim_mode == normal || vim_mode == visual) && !VimWaiting && !menu",
+    "context": "vim_mode == visual",
+    "bindings": {
+      "shift-p": ["workspace::SendKeystrokes", "\" shift-= d shift-p"]
+    }
+  },
+  {
+    "context": "vim_mode == normal",
+    "bindings": {
+      "shift-y": ["workspace::SendKeystrokes", "y $"],
+      "enter": ["workspace::SendKeystrokes", "o escape"]
+    }
+  },
+  {
+    "context": "VimControl && !menu",
     "bindings": {
       // centre cursor after moving and only 10 lines instead of half page
       "ctrl-d": ["workspace::SendKeystrokes", "1 0 j z z"],
       "ctrl-u": ["workspace::SendKeystrokes", "1 0 k z z"],
       "pagedown": ["workspace::SendKeystrokes", "2 0 j z z"],
-      "pageup": ["workspace::SendKeystrokes", "2 0 k z z"]
+      "pageup": ["workspace::SendKeystrokes", "2 0 k z z"],
+      "shift-k shift-w": ["pane::CloseAllItems", { "saveIntent": "skip" }]
     }
   },
   {
@@ -68,10 +85,23 @@
     }
   },
   {
+    "context": "vim_mode == insert",
+    "bindings": {
+      "cmd-c": ["vim::SwitchMode", "Normal"]
+    }
+  },
+  {
     "context": "vim_mode == visual",
     "bindings": {
+      "cmd-c": ["vim::SwitchMode", "Normal"],
       "[": "editor::SelectLargerSyntaxNode",
       "]": "editor::SelectSmallerSyntaxNode"
+    }
+  },
+  {
+    "context": "ProjectPanel && not_editing",
+    "bindings": {
+      "n": "project_panel::NewFile"
     }
   }
 ]

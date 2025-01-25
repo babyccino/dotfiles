@@ -1,20 +1,15 @@
-export NVM_DIR="$HOME/.nvm"
-  [ -s "/opt/homebrew/opt/nvm/nvm.sh" ] && \. "/opt/homebrew/opt/nvm/nvm.sh"  # This loads nvm
-  [ -s "/opt/homebrew/opt/nvm/etc/bash_completion.d/nvm" ] && \. "/opt/homebrew/opt/nvm/etc/bash_completion.d/nvm"  # This loads nvm bash_completion
-
-export PATH="$HOME/bin:${PATH}"
 export PATH="$PATH:/usr/local/git/bin:/usr/local/bin"
 export PATH="$PATH:/Users/gusryan/Documents/Code/useful_stuff/ExisKeycloak/tools/KeycloakConfiguration/KeycloakConfiguration/bin/Debug/net6.0"
-
-# node
 export PATH="/usr/local/share/npm/bin:$PATH"
 
-# open neovim with vi command
+export XDG_CONFIG_HOME="~/.config"
+
+alias vi="nvim"
 alias vim="nvim"
 alias vi="nvim"
-alias hello="nvim"
+alias nb="f() { pbpaste | xargs -I % git checkout -b % develop-global && pbpaste | xargs git push --set-upstream origin };f"
+alias zed="zed ."
 
-# zoxide -> z
 eval "$(zoxide init zsh)"
 
 # Bind ctrl-r but not up arrow

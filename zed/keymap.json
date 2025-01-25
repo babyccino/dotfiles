@@ -1,13 +1,20 @@
 [
   {
-    "context": "Editor",
+    "use_key_equivalents": true,
     "bindings": {
-      "pageup": "editor::MovePageUp",
-      "pagedown": "editor::MovePageDown",
+      // hit this by accident all the time
+      "cmd-o": null
+    }
+  },
+  {
+    "context": "Editor && !menu",
+    "bindings": {
       "cmd-shift-s": "workspace::SaveAll",
       "alt-j": "editor::AddSelectionBelow",
       "alt-k": "editor::AddSelectionAbove",
-      "cmd-f": "project_panel::ToggleFocus"
+      "cmd-f": "project_panel::ToggleFocus",
+      "cmd-[": "pane::ActivatePrevItem",
+      "cmd-]": "pane::ActivateNextItem"
     }
   },
   {
@@ -16,19 +23,6 @@
       "enter": "editor::ConfirmCompletion",
       "shift-tab": "editor::ContextMenuPrev",
       "tab": "editor::ContextMenuNext"
-    }
-  },
-  {
-    "context": "vim_mode == visual",
-    "bindings": {
-      "shift-p": ["workspace::SendKeystrokes", "\" shift-= d shift-p"]
-    }
-  },
-  {
-    "context": "vim_mode == normal",
-    "bindings": {
-      "shift-y": ["workspace::SendKeystrokes", "y $"],
-      "enter": ["workspace::SendKeystrokes", "o escape"]
     }
   },
   {
@@ -41,7 +35,19 @@
       "ctrl-d": ["workspace::SendKeystrokes", "2 0 j z z"],
       "pagedown": ["workspace::SendKeystrokes", "2 0 j z z"],
       "pageup": ["workspace::SendKeystrokes", "2 0 k z z"],
-      "shift-k shift-w": ["pane::CloseAllItems", { "saveIntent": "skip" }]
+
+      "shift-k w": ["pane::CloseActiveItem", { "saveIntent": "skip" }],
+      "shift-k shift-w": ["pane::CloseActiveItem", { "saveIntent": "skip" }],
+      "shift-k q": ["pane::CloseAllItems", { "saveIntent": "skip" }],
+      "shift-k shift-q": ["pane::CloseAllItems", { "saveIntent": "skip" }],
+
+      "n": ["workspace::SendKeystrokes", "n z z"],
+      "shift-n": ["workspace::SendKeystrokes", "shift-n z z"],
+
+      "z x": ["editor::FoldAtLevel", { "level": 1 }],
+
+      "g f": "file_finder::Toggle",
+      "g r": "editor::FindAllReferences"
     }
   },
   {
@@ -52,21 +58,6 @@
     }
   },
   {
-    "context": "!EasyMotionControlled && (Editor && VimControl && !VimWaiting && !menu)",
-    "bindings": {
-      "g f": "file_finder::Toggle",
-      "g r": "editor::FindAllReferences"
-    }
-  },
-  // switch these bindings because I use cmd-] more often
-  {
-    "context": "Editor",
-    "bindings": {
-      "cmd-[": "pane::ActivatePrevItem",
-      "cmd-]": "pane::ActivateNextItem"
-    }
-  },
-  {
     "context": "Pane",
     "bindings": {
       "cmd-{": "editor::Outdent",
@@ -74,7 +65,8 @@
     }
   },
   {
-    "context": "Editor && VimControl && !VimWaiting && !menu",
+    // window related commands (ctrl-w X)
+    "context": "ProjectPanel || CollabPanel || OutlinePanel || ChatPanel || VimControl || EmptyPane || SharedScreen || MarkdownPreview || KeyContextView",
     "bindings": {
       "ctrl-w v": "pane::SplitRight",
       "ctrl-w ctrl-v": "pane::SplitRight"
@@ -87,17 +79,26 @@
     }
   },
   {
-    "context": "vim_mode == insert",
+    "context": "vim_mode == normal && !menu",
+    "bindings": {
+      "shift-y": ["workspace::SendKeystrokes", "y $"],
+      "enter": ["workspace::SendKeystrokes", "o escape"]
+    }
+  },
+  {
+    "context": "vim_mode == insert && !menu",
     "bindings": {
       "cmd-c": ["vim::SwitchMode", "Normal"]
     }
   },
   {
-    "context": "vim_mode == visual",
+    "context": "vim_mode == visual && !menu",
     "bindings": {
+      "shift-p": ["workspace::SendKeystrokes", "\" shift-= d shift-p"],
       "cmd-c": ["vim::SwitchMode", "Normal"],
       "[": "editor::SelectLargerSyntaxNode",
-      "]": "editor::SelectSmallerSyntaxNode"
+      "]": "editor::SelectSmallerSyntaxNode",
+      "alt-;": "editor::SplitSelectionIntoLines"
     }
   },
   {

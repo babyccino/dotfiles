@@ -2,9 +2,6 @@ export PATH="$PATH:/usr/local/git/bin:/usr/local/bin"
 export PATH="$PATH:/Users/gusryan/Documents/Code/useful_stuff/ExisKeycloak/tools/KeycloakConfiguration/KeycloakConfiguration/bin/Debug/net6.0"
 export PATH="/usr/local/share/npm/bin:$PATH"
 
-export XDG_CONFIG_HOME="~/.config"
-export ATUIN_CONFIG_DIR="$XDG_CONFIG_HOME/atuin"
-
 alias vi="nvim"
 alias vim="nvim"
 alias vi="nvim"

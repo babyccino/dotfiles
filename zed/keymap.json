@@ -2,8 +2,7 @@
   {
     "use_key_equivalents": true,
     "bindings": {
-      // hit this by accident all the time
-      "cmd-o": null
+      "cmd-o": "projects::OpenRecent"
     }
   },
   {

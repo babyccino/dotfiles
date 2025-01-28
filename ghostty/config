@@ -1,3 +1,17 @@
-font-family = "Hack FC Ligatured"
-theme = "Ayu Mirage"
+font-family = Hack FC Ligatured
+theme = Ayu Mine
+background-opacity = 0.95
+background-blur-radius = 20
+unfocused-split-opacity = 0.5
 
+clipboard-read = allow
+clipboard-write = allow
+mouse-hide-while-typing = true
+mouse-shift-capture = true
+focus-follows-mouse = true
+macos-titlebar-style = tabs
+
+initial-window = false
+quit-after-last-window-closed = false
+
+keybind = global:ctrl+`=toggle_quick_terminal

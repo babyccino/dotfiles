@@ -3,15 +3,18 @@ find ./group/* | while read -r file; do
   brew install $(cat $file)
 done
 
-# aerospace
 brew install --cask nikitabobko/tap/aerospace
 
 # jankyborders
 brew tap FelixKratz/formulae
 brew install borders
 
-# docker
 brew install --cask docker
 
-# ghostty
 brew install --cask ghostty
+
+brew tap FelixKratz/formulae
+brew install sketchybar
+
+# font
+brew install --cask font-hack-nerd-font

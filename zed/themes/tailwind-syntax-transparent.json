@@ -104,7 +104,7 @@
         "renamed": "#f472b6",
         "renamed.background": "#cc5f99",
         "renamed.border": "#b25386",
-        "scrollbar.thumb.background": "#181f2a",
+        "scrollbar.thumb.background": "#181f2ad0",
         "scrollbar.thumb.border": "#32405350",
         "scrollbar.thumb.hover_background": null,
         "scrollbar.track.background": null,

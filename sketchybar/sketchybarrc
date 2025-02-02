@@ -64,14 +64,7 @@ sketchybar --add item clock right \
     background.border_width=0 \
     script="$PLUGIN_DIR/clock.sh"
 
-sketchybar --add item clock right \
-    --set clock \
-    icon=􀐬 \
-    update_freq=10 \
-    background.border_width=0 \
-    script="$PLUGIN_DIR/clock.sh"
-
-source $ITEM_DIR/ram.sh
+source $ITEM_DIR/battery.sh
 
 sketchybar --add item cpu right \
            --set cpu  update_freq=2 \

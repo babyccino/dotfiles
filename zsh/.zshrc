@@ -8,7 +8,7 @@ alias vi="nvim"
 alias vim="nvim"
 alias vi="nvim"
 alias nb="f() { pbpaste | xargs -I % git checkout -b % develop-global && pbpaste | xargs git push --set-upstream origin };f"
-alias zed="zed ."
+alias zed="zed-preview ."
 
 eval "$(zoxide init zsh)"
 

@@ -9,6 +9,8 @@ brew install --cask nikitabobko/tap/aerospace
 brew tap FelixKratz/formulae
 brew install borders
 
+brew install --cask zed@preview
+
 brew install --cask docker
 
 brew install --cask ghostty

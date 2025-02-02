@@ -55,13 +55,46 @@ source $ITEM_DIR/front_app.sh
 # source $ITEM_DIR/spaces.sh
 
 # -- Right Side Items --
-source $ITEM_DIR/clock.sh
-source $ITEM_DIR/battery.sh
-source $ITEM_DIR/cpu.sh
-source $ITEM_DIR/notifications.sh
+sketchybar --add item clock right \
+    --set clock \
+    icon=􀐬 \
+    update_freq=10 \
+    background.border_width=0 \
+    script="$PLUGIN_DIR/clock.sh"
 
-##### Finalizing Setup #####
-# The below command is only needed at the end of the initial configuration to
-# force all scripts to run the first time, it should never be run in an item script.
+sketchybar --add item clock right \
+    --set clock \
+    icon=􀐬 \
+    update_freq=10 \
+    background.border_width=0 \
+    script="$PLUGIN_DIR/clock.sh"
+
+source $ITEM_DIR/ram.sh
+
+sketchybar --add item cpu right \
+           --set cpu  update_freq=2 \
+                      icon="􀫥" \
+                      icon.font="sketchybar-app-font:Regular:15.0" \
+                      background.border_width=0 \
+                      script="$PLUGIN_DIR/cpu.sh" \
+                      label.align=right \
+                      label.width=45 \
+                      align=right
+
+sketchybar --add item outlook right \
+           --set outlook \
+                 update_freq=5 \
+                 script="$PLUGIN_DIR/notifications.sh" \
+                 icon.font="sketchybar-app-font:Mono:15.0" \
+                 click_script="open -a 'Microsoft Outlook'"\
+                 icon="􀍖"\
+           --subscribe outlook system_woke
+
+sketchybar --add item teams right \
+           --set teams \
+                 icon.font="sketchybar-app-font:Mono:15.0" \
+                 click_script="open -a 'Microsoft Teams'"\
+                 icon="󰊻"\
+           --subscribe teams system_woke
 
 sketchybar --update

@@ -3,7 +3,10 @@
     "use_key_equivalents": true,
     "bindings": {
       "cmd-o": "projects::OpenRecent",
-      "cmd-q": null
+      "cmd-q": null,
+      "cmd-q cmd-q": "zed::Quit",
+      "ctrl-w m": "workspace::ToggleZoom",
+      "ctrl-w ctrl-m": "workspace::ToggleZoom"
     }
   },
   {

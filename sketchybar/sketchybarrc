@@ -25,7 +25,6 @@ bar=(
   padding_right=10
   color=0x00000000
 )
-
 sketchybar --bar "${bar[@]}"
 
 ##### Changing Defaults #####
@@ -50,9 +49,12 @@ sketchybar --default updates=when_shown                                \
                     icon.padding_right=4
 
 # -- Left Side Items --
-source $ITEM_DIR/front_app.sh
-# TODO
-# source $ITEM_DIR/spaces.sh
+sketchybar --add item front_app center \
+           --set front_app \
+           icon.font="sketchybar-app-font:Regular:15.0" \
+           script="$PLUGIN_DIR/front_app.sh"            \
+           --subscribe front_app front_app_switched
+# TODO spaces
 
 # -- Right Side Items --
 sketchybar --add item clock right \

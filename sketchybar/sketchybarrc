@@ -23,6 +23,7 @@ bar=(
   sticky=off
   padding_left=10
   padding_right=10
+  padding_top=2
   color=0x00000000
 )
 sketchybar --bar "${bar[@]}"
@@ -76,14 +77,15 @@ sketchybar --add item cpu right \
                       label.width=45 \
                       align=right
 
-sketchybar --add item outlook right \
-           --set outlook \
-                 update_freq=5 \
-                 script="$PLUGIN_DIR/notifications.sh" \
-                 icon.font="sketchybar-app-font:Mono:15.0" \
-                 click_script="open -a 'Microsoft Outlook'"\
-                 icon="􀍖"\
-           --subscribe outlook system_woke
+sketchybar --add item ram right \
+           --set ram  update_freq=2 \
+                      icon="􀫦" \
+                      icon.font="sketchybar-app-font:Regular:15.0" \
+                      background.border_width=0 \
+                      script="$PLUGIN_DIR/ram.sh" \
+                      label.align=right \
+                      label.width=62 \
+                      align=left
 
 sketchybar --add item teams right \
            --set teams \

@@ -85,7 +85,9 @@
     "context": "vim_mode == normal && !menu",
     "bindings": {
       "shift-y": ["workspace::SendKeystrokes", "y $"],
-      "enter": ["workspace::SendKeystrokes", "o escape"]
+      "enter": ["workspace::SendKeystrokes", "o escape"],
+      "ctrl-h": "vim::StartOfLineDownward",
+      "ctrl-l": "vim::EndOfLine"
     }
   },
   {

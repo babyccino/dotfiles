@@ -1,10 +1,9 @@
-#!/bin/sh
+#!/bin/bash
 
-# make sure it's executable with:
-# chmod +x ~/.config/sketchybar/plugins/aerospace.sh
+echo "focued $FOCUSED_WORKSPACE arg $1"
 
-if [ "$1" = "$FOCUSED_WORKSPACE" ]; then
-    sketchybar --set $NAME background.drawing=on
+if [ "$1" = "space.$FOCUSED_WORKSPACE" ]; then
+    sketchybar --set $NAME background.color="0x88001f30"
 else
-    sketchybar --set $NAME background.drawing=off
+    sketchybar --set $NAME background.color="0x44001f30"
 fi

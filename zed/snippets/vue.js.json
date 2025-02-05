@@ -1,0 +1,16 @@
+{
+  "vue component": {
+    "prefix": ["v3comp", "comp"],
+    "description": "Vue Component",
+    "body": [
+      "<template>",
+      "  <div>hello???</div>",
+      "</template>",
+      "",
+      "<script setup lang=\"ts\">",
+      "const props = defineProps<{$0}>()",
+      "</script>",
+      ""
+    ]
+  }
+}

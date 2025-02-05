@@ -1,0 +1,26 @@
+{
+  "top level setup defineProps": {
+    "prefix": ["props", "defineProps"],
+    "description": "Vue Top level setup defineProps",
+    "body": ["const props = defineProps<{$0}>()"]
+  },
+  "top level setup emits": {
+    "prefix": ["emits", "defineEmits"],
+    "description": "Vue Top level setup defineEmits",
+    "body": ["const emit = defineEmits<{(event: '$0'): void}>()"]
+  },
+  "top level setup modelValue": {
+    "prefix": ["modelValue", "defineVmodel", "vmodel"],
+    "description": "Vue Top level setup defineEmits",
+    "body": [
+      "const props = defineProps<{modelValue: $0}>()",
+      "",
+      "const emit = defineEmits<{(event: 'update:modelValue', payload: typeof props.modelValue): void}>()"
+    ]
+  },
+  "top level setup define model": {
+    "prefix": ["model", "defineVmodel", "vmodel"],
+    "description": "Vue Top level setup define Mode",
+    "body": ["const model = defineModel<$0>({required: true})"]
+  }
+}

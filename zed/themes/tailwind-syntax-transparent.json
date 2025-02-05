@@ -464,7 +464,7 @@
             "font_weight": null
           }
         },
-        "tab.active_background": "#181f2a",
+        "tab.active_background": "#1e293b",
         "tab.inactive_background": "#0000",
         "tab_bar.background": "#0000",
         "terminal.ansi.black": "#d1d5dc",
@@ -971,7 +971,7 @@
             "font_weight": null
           }
         },
-        "tab.active_background": "#181f2a",
+        "tab.active_background": "#1e293b",
         "tab.inactive_background": "#0000",
         "tab_bar.background": "#0000",
         "terminal.ansi.black": "#d1d5dc",

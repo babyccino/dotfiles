@@ -1,6 +1,7 @@
 package main
 
 import (
+	"bytes"
 	"fmt"
 	"os"
 	"os/exec"
@@ -33,13 +34,27 @@ func reset() {
 	}
 }
 
-func printErr(args []string, err error) {
+var buf bytes.Buffer = *bytes.NewBuffer(make([]byte, 0, 1024))
+
+func runAndLog(cmnd *exec.Cmd) error {
+	cmnd.Stdout = &buf
+	cmnd.Stderr = &buf
+	err := cmnd.Run()
+
+	if err == nil {
+		return nil
+	}
+
 	fmt.Fprintf(
 		os.Stderr,
-		"err running %s: %v",
-		strings.Join(args, " "),
+		"err running %s\n\n%s\n\n%v",
+		strings.Join(cmnd.Args, " "),
+		string(buf.Bytes()),
 		err,
 	)
+
+	os.Exit(1)
+	return err
 }
 
 func newWorkspace(name string) *Workspace {
@@ -54,9 +69,14 @@ func (workspace *Workspace) getId() string {
 
 func (workspace *Workspace) getLabelAndUpdate() string {
 	label := ""
+	first := true
 	for key, val := range workspace.kv {
 		if val {
-			label += " " + IconMap(key)
+			if first {
+				label += IconMap(key)
+			} else {
+				label += " " + IconMap(key)
+			}
 		} else {
 			delete(workspace.kv, key)
 		}
@@ -103,10 +123,8 @@ func addWorkspace(workspace *Workspace) {
 		fmt.Sprintf("script=~/.config/sketchybar/plugins/aerospace.sh %s", id),
 	)
 
-	err := cmnd.Run()
+	err := runAndLog(cmnd)
 	if err != nil {
-		printErr(cmnd.Args, err)
-		os.Exit(1)
 		return
 	}
 }
@@ -122,10 +140,8 @@ func setWorkspace(workspace *Workspace) {
 		fmt.Sprintf("label=%s", label),
 	)
 
-	err := cmnd.Run()
+	err := runAndLog(cmnd)
 	if err != nil {
-		printErr(cmnd.Args, err)
-		os.Exit(1)
 		return
 	}
 }
@@ -137,10 +153,8 @@ func removeWorkspace(workspace *Workspace) {
 		workspace.getId(),
 	)
 
-	err := cmnd.Run()
+	err := runAndLog(cmnd)
 	if err != nil {
-		printErr(cmnd.Args, err)
-		os.Exit(1)
 		return
 	}
 }
@@ -151,7 +165,13 @@ func loop() {
 	cmnd := exec.Command("aerospace", "list-windows", "--all", "--format", "%{workspace}\\%{app-name}")
 	out, err := cmnd.Output()
 	if err != nil {
-		printErr(cmnd.Args, err)
+		fmt.Fprintf(
+			os.Stderr,
+			"err running %s\n\n%s\n\n%v",
+			strings.Join(cmnd.Args, " "),
+			string(out),
+			err,
+		)
 		os.Exit(1)
 		return
 	}

@@ -48,6 +48,15 @@
       "shift-n": ["workspace::SendKeystrokes", "shift-n z z"],
 
       "z x": ["editor::FoldAtLevel", { "level": 1 }],
+      "z 1": ["editor::FoldAtLevel", { "level": 1 }],
+      "z 2": ["editor::FoldAtLevel", { "level": 2 }],
+      "z 3": ["editor::FoldAtLevel", { "level": 3 }],
+      "z 4": ["editor::FoldAtLevel", { "level": 4 }],
+      "z 5": ["editor::FoldAtLevel", { "level": 5 }],
+      "z 6": ["editor::FoldAtLevel", { "level": 6 }],
+      "z 7": ["editor::FoldAtLevel", { "level": 7 }],
+      "z 8": ["editor::FoldAtLevel", { "level": 8 }],
+      "z 9": ["editor::FoldAtLevel", { "level": 9 }],
 
       "g f": "file_finder::Toggle",
       "g r": "editor::FindAllReferences"
@@ -85,9 +94,7 @@
     "context": "vim_mode == normal && !menu",
     "bindings": {
       "shift-y": ["workspace::SendKeystrokes", "y $"],
-      "enter": ["workspace::SendKeystrokes", "o escape"],
-      "ctrl-h": "vim::StartOfLineDownward",
-      "ctrl-l": "vim::EndOfLine"
+      "enter": ["workspace::SendKeystrokes", "o escape"]
     }
   },
   {
@@ -104,6 +111,13 @@
       "[": "editor::SelectLargerSyntaxNode",
       "]": "editor::SelectSmallerSyntaxNode",
       "alt-;": "editor::SplitSelectionIntoLines"
+    }
+  },
+  {
+    "context": "(vim_mode == normal || vim_mode == visual) && !menu",
+    "bindings": {
+      "ctrl-h": "vim::StartOfLineDownward",
+      "ctrl-l": "vim::EndOfLine"
     }
   },
   {

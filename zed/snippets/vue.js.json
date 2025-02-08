@@ -12,5 +12,14 @@
       "</script>",
       ""
     ]
+  },
+  "template for": {
+    "prefix": ["templatefor", "tfor"],
+    "description": "Vue template for",
+    "body": [
+      "<template v-for=\"(el, i) in $0\" :key=\"el.key\">",
+      "  <div :key=\"el.key\"></div>",
+      "</template>"
+    ]
   }
 }

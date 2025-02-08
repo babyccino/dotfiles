@@ -118,7 +118,6 @@ func addWorkspace(workspace *Workspace) {
 		"icon.font=SF Pro:Bold:12.0",
 		fmt.Sprintf("icon=%s", workspace.name),
 		"label.font=sketchybar-app-font:Regular:15.0",
-		"label.padding_top=3",
 		fmt.Sprintf("label=%s", label),
 		fmt.Sprintf("script=~/.config/sketchybar/plugins/aerospace.sh %s", id),
 	)

@@ -23,7 +23,6 @@ bar=(
   sticky=off
   padding_left=10
   padding_right=10
-  padding_top=2
   color=0x00000000
 )
 sketchybar --bar "${bar[@]}"
@@ -69,7 +68,6 @@ sketchybar --add item front_app center \
 #             icon.font=SF Pro:Bold:12.0 \
 #             icon=icon \
 #             label.font=sketchybar-app-font:Regular:15.0 \
-#             label.padding_top=3 \
 #             label=label \
 #             script=~/.config/sketchybar/plugins/aerospace.sh id \
 

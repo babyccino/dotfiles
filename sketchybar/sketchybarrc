@@ -2,19 +2,12 @@
 
 sketchybar --add event aerospace_workspace_change
 
-source "$CONFIG_DIR/colors.sh" # Loads all defined colors
+source "$CONFIG_DIR/colors.sh"
 
 ITEM_DIR="$CONFIG_DIR/items"
 PLUGIN_DIR="$CONFIG_DIR/plugins"
 
-FONT="Hack Nerd Font" # Needs to have Regular, Bold, Semibold, Heavy and Black variants
-
-##### Bar Appearance #####
-# Configuring the general appearance of the bar, these are only some of the
-# options available. For all options see:
-# https://felixkratz.github.io/SketchyBar/config/bar
-# If you are looking for other colors, see the color picker:
-# https://felixkratz.github.io/SketchyBar/config/tricks#color-picker
+FONT="Hack Nerd Font"
 
 bar=(
   height=32
@@ -24,13 +17,10 @@ bar=(
   padding_left=10
   padding_right=10
   color=0x00000000
+  notch_width=210
 )
 sketchybar --bar "${bar[@]}"
 
-##### Changing Defaults #####
-# We now change some default values that are applied to all further items
-# For a full list of all available item properties see:
-# https://felixkratz.github.io/SketchyBar/config/items
 default=(
   updates=when_shown
   icon.font="$FONT:Bold:17.0"
@@ -42,7 +32,7 @@ default=(
   background.height=26
   background.color="$TRANSPARENT"
   padding_left=5
-  padding_right=5
+  padding_right=4
   label.padding_left=4
   label.padding_right=10
   icon.padding_left=10
@@ -51,35 +41,22 @@ default=(
 sketchybar --default "${default[@]}"
 
 # -- Left Side Items --
-sketchybar --add item front_app center \
-           --set front_app \
-           icon.font="sketchybar-app-font:Regular:15.0" \
-           script="$PLUGIN_DIR/front_app.sh"            \
-           --subscribe front_app front_app_switched
-
-# managed by the updater program
-# sketchybar  --add item id left \
-#             --subscribe id aerospace_workspace_change \
-#             --set id \
-#             background.corner_radius=5 \
-#             background.border_width=0 \
-#             background.padding_right=2 \
-#             background.padding_left=2 \
-#             icon.font=SF Pro:Bold:12.0 \
-#             icon=icon \
-#             label.font=sketchybar-app-font:Regular:15.0 \
-#             label=label \
-#             script=~/.config/sketchybar/plugins/aerospace.sh id \
+# sketchybar  --add item front_app q \
+sketchybar \
+  --add item front_app center \
+  --set front_app icon.font="sketchybar-app-font:Regular:15.0" \
+                  script="$PLUGIN_DIR/front_app.sh" \
+  --subscribe front_app front_app_switched
 
 sketchybar --add event aerospace_workspace_change
 
 # -- Right Side Items --
-sketchybar --add item clock right \
-    --set clock \
-    icon=􀐬 \
-    update_freq=10 \
-    background.border_width=0 \
-    script="$PLUGIN_DIR/clock.sh"
+sketchybar \
+  --add item clock right \
+  --set clock icon="􀐬" \
+              update_freq=10 \
+              background.border_width=0 \
+              script="$PLUGIN_DIR/clock.sh"
 
 sketchybar \
   --add item weather right \
@@ -90,31 +67,35 @@ sketchybar \
 
 source $ITEM_DIR/battery.sh
 
-sketchybar --add item cpu right \
-           --set cpu  update_freq=2 \
-                      icon="􀫥" \
-                      icon.font="sketchybar-app-font:Regular:15.0" \
-                      background.border_width=0 \
-                      script="$PLUGIN_DIR/cpu.sh" \
-                      label.align=right \
-                      label.width=45 \
-                      align=right
+sketchybar \
+  --add item cpu right \
+  --set cpu update_freq=2 \
+            icon="􀫥" \
+            icon.font="sketchybar-app-font:Regular:15.0" \
+            background.border_width=0 \
+            script="$PLUGIN_DIR/cpu.sh" \
+            label.align=right \
+            label.width=45 \
+            align=right
 
-sketchybar --add item ram right \
-           --set ram  update_freq=2 \
-                      icon="􀫦" \
-                      icon.font="sketchybar-app-font:Regular:15.0" \
-                      background.border_width=0 \
-                      script="$PLUGIN_DIR/ram.sh" \
-                      label.align=right \
-                      label.width=62 \
-                      align=left
+sketchybar \
+  --add item ram right \
+  --set ram update_freq=2 \
+            icon="􀫦" \
+            icon.font="sketchybar-app-font:Regular:15.0" \
+            background.border_width=0 \
+            script="$PLUGIN_DIR/ram.sh" \
+            label.align=right \
+            label.width=59 \
+            align=left
 
-sketchybar --add item teams right \
-           --set teams \
-                 icon.font="sketchybar-app-font:Mono:15.0" \
-                 click_script="open -a 'Microsoft Teams'"\
-                 icon="󰊻"\
-           --subscribe teams system_woke
+sketchybar
+  --add item teams right \
+  --set teams icon.font="sketchybar-app-font:Mono:15.0" \
+              update_freq=5 \
+              script="$PLUGIN_DIR/notifications.sh" \
+              click_script="open -a 'Microsoft Teams'" \
+              icon="󰊻" \
+  --subscribe teams system_woke
 
 sketchybar --update

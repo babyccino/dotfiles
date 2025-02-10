@@ -9,6 +9,6 @@ pages_inactive=$(echo "$memory_stats" | awk '/Pages inactive:/ {print $3}' | tr 
 
 total_used_pages=$((pages_active + pages_wired + pages_compressed + pages_inactive))
 
-memory_gb=$(echo "scale=2; $total_used_pages * $(pagesize) / 1024^3" | bc)
+memory_gb=$(echo "scale=1; $total_used_pages * $(pagesize) / 1024^3" | bc)
 
 sketchybar --set $NAME label="$memory_gb GB"

@@ -66,14 +66,11 @@ struct LocationApp: App {
 
   var body: some Scene {
     WindowGroup {
-      // Invisible window for triggering permission dialog
       Color.clear
         .frame(width: 1, height: 1)
         .onAppear {
-          NSApp.setActivationPolicy(.prohibited)  // Hide the window from appearing
-          // Allow the permission request to trigger before running the location manager
+          NSApp.setActivationPolicy(.prohibited)
           DispatchQueue.global(qos: .background).async {
-            // Start the run loop to prevent the app from exiting
             RunLoop.main.run()
           }
         }

@@ -89,7 +89,7 @@ sketchybar \
             label.width=59 \
             align=left
 
-sketchybar
+sketchybar \
   --add item teams right \
   --set teams icon.font="sketchybar-app-font:Mono:15.0" \
               update_freq=5 \

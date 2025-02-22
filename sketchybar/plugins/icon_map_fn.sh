@@ -66,7 +66,7 @@ function icon_map() {
   "Sequel Ace")
     icon_result=":sequel_ace:"
     ;;
-  "Zed")
+  "Zed" | "Zed Preview")
     icon_result=":zed:"
     ;;
   "Zen Browser")

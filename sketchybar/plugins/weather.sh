@@ -1,6 +1,8 @@
 #!/bin/bash
 LOCATION=$(~/.config/location_cli/location_cli.sh)
 URL="https://wttr.in/${LOCATION}?format=j1"
+echo $LOCATION
+echo $URL
 RAW=$(curl $URL)
 WEATHER=$(echo $RAW | jq '.current_condition.[0]')
 TEMP=$(echo "$WEATHER" | jq '.temp_C' | tr -d '"')

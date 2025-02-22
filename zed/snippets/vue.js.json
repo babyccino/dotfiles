@@ -21,5 +21,10 @@
       "  <div :key=\"el.key\"></div>",
       "</template>"
     ]
+  },
+  "i18n": {
+    "prefix": ["i18n", "int"],
+    "description": "add i18n",
+    "body": ["{{ $t(\"$0\") }}"]
   }
 }

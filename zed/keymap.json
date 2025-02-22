@@ -6,7 +6,28 @@
       "cmd-q": null,
       "cmd-q cmd-q": "zed::Quit",
       "ctrl-w m": "workspace::ToggleZoom",
-      "ctrl-w ctrl-m": "workspace::ToggleZoom"
+      "ctrl-w ctrl-m": "workspace::ToggleZoom",
+      "ctrl-c": "menu::Cancel",
+      "cmd-a": "assistant::ToggleFocus",
+      "cmd-b": "workspace::CloseAllDocks"
+    }
+  },
+  {
+    "context": "Editor",
+    "bindings": {
+      "ctrl-c": "editor::Cancel"
+    }
+  },
+  {
+    "context": "Editor && !menu && vim_mode != normal",
+    "bindings": {
+      "ctrl-c": "vim::SwitchToNormalMode"
+    }
+  },
+  {
+    "context": "Editor && mode == single_line",
+    "bindings": {
+      "ctrl-c": "editor::Cancel"
     }
   },
   {
@@ -23,15 +44,12 @@
   {
     "context": "Editor && showing_completions",
     "bindings": {
-      "enter": "editor::ConfirmCompletion",
-      "shift-tab": "editor::ContextMenuPrev",
-      "tab": "editor::ContextMenuNext"
+      "enter": "editor::ConfirmCompletion"
     }
   },
   {
     "context": "VimControl && !menu",
     "bindings": {
-      // centre cursor after moving and only 10 lines instead of half page
       "ctrl-k": ["workspace::SendKeystrokes", "1 0 k z z"],
       "ctrl-j": ["workspace::SendKeystrokes", "1 0 j z z"],
       "ctrl-u": ["workspace::SendKeystrokes", "2 0 k z z"],
@@ -39,24 +57,24 @@
       "pagedown": ["workspace::SendKeystrokes", "2 0 j z z"],
       "pageup": ["workspace::SendKeystrokes", "2 0 k z z"],
 
-      "shift-k w": ["pane::CloseActiveItem", { "saveIntent": "skip" }],
-      "shift-k shift-w": ["pane::CloseActiveItem", { "saveIntent": "skip" }],
-      "shift-k q": ["pane::CloseAllItems", { "saveIntent": "skip" }],
-      "shift-k shift-q": ["pane::CloseAllItems", { "saveIntent": "skip" }],
+      "shift-k w": ["pane::CloseActiveItem", { "save_intent": "skip" }],
+      "shift-k shift-w": ["pane::CloseActiveItem", { "save_intent": "skip" }],
+      "shift-k q": ["pane::CloseAllItems", { "save_intent": "skip" }],
+      "shift-k shift-q": ["pane::CloseAllItems", { "save_intent": "skip" }],
 
       "n": ["workspace::SendKeystrokes", "n z z"],
       "shift-n": ["workspace::SendKeystrokes", "shift-n z z"],
 
-      "z x": ["editor::FoldAtLevel", { "level": 1 }],
-      "z 1": ["editor::FoldAtLevel", { "level": 1 }],
-      "z 2": ["editor::FoldAtLevel", { "level": 2 }],
-      "z 3": ["editor::FoldAtLevel", { "level": 3 }],
-      "z 4": ["editor::FoldAtLevel", { "level": 4 }],
-      "z 5": ["editor::FoldAtLevel", { "level": 5 }],
-      "z 6": ["editor::FoldAtLevel", { "level": 6 }],
-      "z 7": ["editor::FoldAtLevel", { "level": 7 }],
-      "z 8": ["editor::FoldAtLevel", { "level": 8 }],
-      "z 9": ["editor::FoldAtLevel", { "level": 9 }],
+      "z x": ["editor::FoldAtLevel", 1],
+      "z 1": ["editor::FoldAtLevel", 1],
+      "z 2": ["editor::FoldAtLevel", 2],
+      "z 3": ["editor::FoldAtLevel", 3],
+      "z 4": ["editor::FoldAtLevel", 4],
+      "z 5": ["editor::FoldAtLevel", 5],
+      "z 6": ["editor::FoldAtLevel", 6],
+      "z 7": ["editor::FoldAtLevel", 7],
+      "z 8": ["editor::FoldAtLevel", 8],
+      "z 9": ["editor::FoldAtLevel", 9],
 
       "g f": "file_finder::Toggle",
       "g r": "editor::FindAllReferences"
@@ -70,6 +88,12 @@
     }
   },
   {
+    "context": "BufferSearchBar",
+    "bindings": {
+      "ctrl-c": "buffer_search::Dismiss"
+    }
+  },
+  {
     "context": "Pane",
     "bindings": {
       "cmd-{": "editor::Outdent",
@@ -77,7 +101,6 @@
     }
   },
   {
-    // window related commands (ctrl-w X)
     "context": "ProjectPanel || CollabPanel || OutlinePanel || ChatPanel || VimControl || EmptyPane || SharedScreen || MarkdownPreview || KeyContextView",
     "bindings": {
       "ctrl-w v": "pane::SplitRight",
@@ -100,14 +123,14 @@
   {
     "context": "vim_mode == insert && !menu",
     "bindings": {
-      "cmd-c": ["vim::SwitchMode", "Normal"]
+      "cmd-c": "vim::SwitchToNormalMode"
     }
   },
   {
     "context": "vim_mode == visual && !menu",
     "bindings": {
       "shift-p": ["workspace::SendKeystrokes", "\" shift-= d shift-p"],
-      "cmd-c": ["vim::SwitchMode", "Normal"],
+      "cmd-c": "vim::SwitchToNormalMode",
       "[": "editor::SelectLargerSyntaxNode",
       "]": "editor::SelectSmallerSyntaxNode",
       "alt-;": "editor::SplitSelectionIntoLines"
@@ -123,7 +146,22 @@
   {
     "context": "ProjectPanel && not_editing",
     "bindings": {
-      "n": "project_panel::NewFile"
+      "n": "project_panel::NewFile",
+      "ctrl-c": "project_panel::ToggleFocus"
+    }
+  },
+  {
+    "context": "AssistantPanel",
+    "use_key_equivalents": true,
+    "bindings": {
+      "ctrl-c": "assistant::ToggleFocus"
+    }
+  },
+  {
+    "context": "Editor",
+    "use_key_equivalents": true,
+    "bindings": {
+      "alt-n": "editor::AcceptEditPrediction"
     }
   }
 ]

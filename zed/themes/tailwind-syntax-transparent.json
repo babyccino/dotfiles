@@ -29,7 +29,7 @@
         "conflict.background": "#d16060",
         "conflict.border": "#b75454",
         "created": "#a7e7b8",
-        "created.background": "#7cf9a4",
+        "created.background": "#7cf9a422",
         "created.border": "#32405350",
         "deleted": "#ffbeba",
         "deleted.background": "#d16060",
@@ -257,13 +257,13 @@
           "link_text": {
             "background_color": null,
             "color": "#7dd3fc",
-            "font_style": "#7dd3fc",
+            "font_style": null,
             "font_weight": null
           },
           "link_uri": {
             "background_color": null,
             "color": "#7dd3fc",
-            "font_style": "#7dd3fc",
+            "font_style": null,
             "font_weight": null
           },
           "number": {
@@ -764,13 +764,13 @@
           "link_text": {
             "background_color": null,
             "color": "#7dd3fc",
-            "font_style": "#7dd3fc",
+            "font_style": null,
             "font_weight": null
           },
           "link_uri": {
             "background_color": null,
             "color": "#7dd3fc",
-            "font_style": "#7dd3fc",
+            "font_style": null,
             "font_weight": null
           },
           "number": {

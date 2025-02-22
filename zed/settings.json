@@ -5,9 +5,15 @@
 // To see all of Zed's default settings without changing your
 // custom settings, run the `open default settings` command
 // from the command palette or from `Zed` application menu.
+
 {
+  "use_system_path_prompts": false,
   "icon_theme": "Zed (Default)",
   "assistant": {
+    "default_model": {
+      "provider": "google",
+      "model": "gemini-1.5-flash"
+    },
     "version": "2",
     "button": false
   },
@@ -20,10 +26,10 @@
   "tabs": {
     "git_status": true
   },
-  "inline_completions": {
-    "disabled_globs": [".env", "crates/editor/src/movement.rs"]
+  "edit_predictions": {
+    "disabled_globs": [".env"]
   },
-  "easy_motion": { "enabled": true },
+  "edit_predictions_disabled_in": ["comment", "string"],
   "inlay_hints": {
     "enabled": true,
     "show_type_hints": false,
@@ -46,11 +52,11 @@
   "format_on_save": "on",
   "language_overrides": {
     "TypeScript": {
-      "show_inline_completions": false
+      "show_edit_predictions": false
     },
     "Rust": {
       "tab_size": 4,
-      "show_inline_completions": false
+      "show_edit_predictions": false
     },
     "JavaScript": {
       "format_on_save": {

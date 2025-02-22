@@ -4,6 +4,7 @@
 # zed
 zed/embeddings
 zed/prompts
+zed/conversations
 
 gh
 

@@ -3,6 +3,7 @@ package main
 import (
 	"bytes"
 	"fmt"
+	"log/slog"
 	"os"
 	"os/exec"
 	"reflect"
@@ -17,7 +18,7 @@ type Workspace struct {
 	changed bool
 	new     bool
 	found   bool
-	kv      map[string]bool
+	apps    map[string]bool
 }
 type Workspaces = map[string]*Workspace
 
@@ -28,8 +29,8 @@ func reset() {
 		val.found = false
 		val.new = false
 		val.changed = false
-		for appName := range val.kv {
-			val.kv[appName] = false
+		for appName := range val.apps {
+			val.apps[appName] = false
 		}
 	}
 }
@@ -39,9 +40,16 @@ var buf bytes.Buffer = *bytes.NewBuffer(make([]byte, 0, 1024))
 func runAndLog(cmnd *exec.Cmd) error {
 	cmnd.Stdout = &buf
 	cmnd.Stderr = &buf
-	err := cmnd.Run()
 
+	err := cmnd.Run()
 	if err == nil {
+		if buf.Len() != 0 {
+			slog.Error(
+				"sketchybar cmd error",
+				slog.String("stdout", string(buf.Bytes())),
+			)
+		}
+		buf.Reset()
 		return nil
 	}
 
@@ -58,7 +66,13 @@ func runAndLog(cmnd *exec.Cmd) error {
 }
 
 func newWorkspace(name string) *Workspace {
-	return &Workspace{name: name, changed: false, new: true, found: false, kv: map[string]bool{}}
+	return &Workspace{
+		name:    name,
+		changed: false,
+		new:     true,
+		found:   false,
+		apps:    map[string]bool{},
+	}
 }
 
 const idPrefix = "space."
@@ -70,15 +84,16 @@ func (workspace *Workspace) getId() string {
 func (workspace *Workspace) getLabelAndUpdate() string {
 	label := ""
 	first := true
-	for key, val := range workspace.kv {
+	for key, val := range workspace.apps {
 		if val {
 			if first {
 				label += IconMap(key)
+				first = false
 			} else {
 				label += " " + IconMap(key)
 			}
 		} else {
-			delete(workspace.kv, key)
+			delete(workspace.apps, key)
 		}
 	}
 	return label
@@ -86,7 +101,7 @@ func (workspace *Workspace) getLabelAndUpdate() string {
 
 func (workspace *Workspace) label() string {
 	label := ""
-	for key, val := range workspace.kv {
+	for key, val := range workspace.apps {
 		if val {
 			label += " " + key
 		}
@@ -95,18 +110,17 @@ func (workspace *Workspace) label() string {
 }
 
 func (workspace *Workspace) update() {
-	for key, val := range workspace.kv {
+	for key, val := range workspace.apps {
 		if !val {
-			delete(workspace.kv, key)
+			delete(workspace.apps, key)
 		}
 	}
 }
 
-func addWorkspace(workspace *Workspace) {
+func (workspace *Workspace) getAddWorkspaceArgs(args *[]string) {
 	label := workspace.getLabelAndUpdate()
 	id := workspace.getId()
-	cmnd := exec.Command(
-		"sketchybar",
+	*args = append(*args,
 		"--add", "item", id,
 		"left",
 		"--subscribe", id, "aerospace_workspace_change",
@@ -121,47 +135,33 @@ func addWorkspace(workspace *Workspace) {
 		fmt.Sprintf("label=%s", label),
 		fmt.Sprintf("script=~/.config/sketchybar/plugins/aerospace.sh %s", id),
 	)
-
-	err := runAndLog(cmnd)
-	if err != nil {
-		return
-	}
 }
 
-func setWorkspace(workspace *Workspace) {
+func (workspace *Workspace) getSetWorkspaceArgs(args *[]string) {
 	label := workspace.getLabelAndUpdate()
-	cmnd := exec.Command(
-		"sketchybar",
+	*args = append(*args,
 		"--set",
 		workspace.getId(),
 		"background.border_width=0",
 		"label.drawing=on",
 		fmt.Sprintf("label=%s", label),
 	)
-
-	err := runAndLog(cmnd)
-	if err != nil {
-		return
-	}
 }
 
-func removeWorkspace(workspace *Workspace) {
-	cmnd := exec.Command(
-		"sketchybar",
+func (workspace *Workspace) getRemoveWorkspaceArgs(args *[]string) {
+	*args = append(*args,
 		"--remove",
 		workspace.getId(),
 	)
-
-	err := runAndLog(cmnd)
-	if err != nil {
-		return
-	}
 }
 
 func nonWhitespace(char byte) bool { return char != ' ' }
 
+const aerospace = "aerospace"
+const sketchybar = "sketchybar"
+
 func loop() {
-	cmnd := exec.Command("aerospace", "list-windows", "--all", "--format", "%{workspace}\\%{app-name}")
+	cmnd := exec.Command(aerospace, "list-windows", "--all", "--format", "%{workspace}\\%{app-name}")
 	out, err := cmnd.Output()
 	if err != nil {
 		fmt.Fprintf(
@@ -204,11 +204,11 @@ func loop() {
 		}
 
 		appName := string(out[slashIndex+1 : newIndex])
-		_, found = workspace.kv[appName]
+		_, found = workspace.apps[appName]
 		if !found {
 			workspace.changed = true
 		}
-		workspace.kv[appName] = true
+		workspace.apps[appName] = true
 
 		if shouldBreak || newIndex == len(out)-1 {
 			break
@@ -218,29 +218,47 @@ func loop() {
 	}
 
 	// todo add all the set commands to one command
-	for key, val := range workspaces {
-		if val.new {
-			addWorkspace(val)
+	args := make([]string, 0)
+	for key, workspace := range workspaces {
+		if workspace.new {
+			slog.Info("adding workspace", slog.String("workspace", workspace.getId()))
+			workspace.getAddWorkspaceArgs(&args)
 			continue
 		}
-		if val.changed {
-			setWorkspace(val)
+		if workspace.changed {
+			slog.Info("updating workspace", slog.String("workspace", workspace.getId()))
+			workspace.getSetWorkspaceArgs(&args)
 			continue
 		}
-		if !val.found {
-			removeWorkspace(val)
+		if !workspace.found {
+			slog.Info("removing workspace", slog.String("workspace", workspace.getId()))
+			workspace.getRemoveWorkspaceArgs(&args)
 			delete(workspaces, key)
 			continue
 		}
 
-		for _, keep := range val.kv {
+		for _, keep := range workspace.apps {
 			if !keep {
-				setWorkspace(val)
+				slog.Info("updating workspace", slog.String("workspace", workspace.getId()))
+				workspace.getSetWorkspaceArgs(&args)
 				break
 			}
 		}
 	}
 
+	if len(args) > 0 {
+		cmnd = exec.Command(
+			sketchybar,
+			args...,
+		)
+
+		err = runAndLog(cmnd)
+		if err != nil {
+			return
+		}
+
+		args = args[:0]
+	}
 }
 
 func SetProcessName(name string) error {

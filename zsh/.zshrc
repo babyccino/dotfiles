@@ -1,8 +1,10 @@
 export PATH="$PATH:/usr/local/git/bin:/usr/local/bin"
 export PATH="$PATH:/Users/gusryan/Documents/Code/useful_stuff/ExisKeycloak/tools/KeycloakConfiguration/KeycloakConfiguration/bin/Debug/net6.0"
-export PATH="/usr/local/share/npm/bin:$PATH"
+export PATH="$PATH:/usr/local/share/npm/bin"
+export PATH="$PATH:/Users/gusryan/go/bin"
 
 export GIT_CONFIG="~/.config/git/.gitconfig"
+export XDG_CONFIG_HOME="~/.config"
 
 alias vi="nvim"
 alias vim="nvim"

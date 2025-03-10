@@ -18,7 +18,9 @@
     "button": false
   },
   "experimental.theme_overrides": {
-    "background.appearance": "blurred"
+    "background.appearance": "blurred",
+    "version_control.added": "#0f0",
+    "version_control.deleted_background": "#f00"
   },
   "git": {
     "git_gutter": "tracked_files"
@@ -50,6 +52,16 @@
     "dock": "right"
   },
   "format_on_save": "on",
+  // "languages": {
+  //   "Go": {
+  //     "formatter": {
+  //       "external": {
+  //         "command": "gofumpt",
+  //         "arguments": ["-extra", "{buffer_path}"]
+  //       }
+  //     }
+  //   }
+  // },
   "language_overrides": {
     "TypeScript": {
       "show_edit_predictions": false
@@ -57,22 +69,6 @@
     "Rust": {
       "tab_size": 4,
       "show_edit_predictions": false
-    },
-    "JavaScript": {
-      "format_on_save": {
-        "external": {
-          "command": "prettier",
-          "arguments": ["--stdin-filepath", "{buffer_path}"]
-        }
-      }
-    },
-    "Go": {
-      "format_on_save": {
-        "external": {
-          "command": "gofmt",
-          "arguments": ["-s", "-w", "{buffer_path}"]
-        }
-      }
     }
   },
   "buffer_font_family": "Hack FC Ligatured",

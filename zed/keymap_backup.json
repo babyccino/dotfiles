@@ -37,8 +37,7 @@
       "alt-j": "editor::AddSelectionBelow",
       "alt-k": "editor::AddSelectionAbove",
       "cmd-f": "project_panel::ToggleFocus",
-      "cmd-g": "git_panel::ToggleFocus",
-      "cmd-[": "pane::ActivatePreviousItem",
+      "cmd-[": "pane::ActivatePrevItem",
       "cmd-]": "pane::ActivateNextItem"
     }
   },
@@ -152,18 +151,6 @@
     }
   },
   {
-    "context": "GitPanel",
-    "bindings": {
-      "ctrl-c": "git_panel::ToggleFocus"
-    }
-  },
-  {
-    "context": "GitPanel && ChangesList",
-    "bindings": {
-      "z": "git::RestoreFile"
-    }
-  },
-  {
     "context": "AssistantPanel",
     "use_key_equivalents": true,
     "bindings": {
@@ -175,16 +162,6 @@
     "use_key_equivalents": true,
     "bindings": {
       "alt-n": "editor::AcceptEditPrediction"
-    }
-  },
-  {
-    "context": "vim_operator == d",
-    "use_key_equivalents": true,
-    "bindings": {
-      "shift-p": "git::RestoreFile",
-      "c": "git::Commit",
-      "o": "git::ToggleStaged",
-      "shift-o": "git::StageAll"
     }
   }
 ]

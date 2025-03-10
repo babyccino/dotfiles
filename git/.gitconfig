@@ -11,3 +11,5 @@
 	cmp = "!f() { git add -A && git commit -m \"$@\" && git push; }; f"
 	unc = reset --soft HEAD~1
 	wip = "!git add -A && git commit -m \"wip\""
+[push]
+	autoSetupRemote = true

@@ -23,4 +23,10 @@ brew install --cask font-hack-nerd-font
 
 # disable apple music
 brew install --cask notunes
-# then you have to add to login items
+
+go install mvdan.cc/gofumpt@latest
+hi there
+hi there
+hi there
+hi there
+hi there

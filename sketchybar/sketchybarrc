@@ -61,7 +61,7 @@ sketchybar \
 sketchybar \
   --add item weather right \
   --set weather icon="􀇃"  \
-                update_freq=300 \
+                update_freq=600 \
                 background.border_width=0 \
                 script="$PLUGIN_DIR/weather.sh"
 

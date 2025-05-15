@@ -141,7 +141,7 @@ function icon_map() {
   "Jellyfin Media Player")
     icon_result=":jellyfin:"
     ;;
-  "Code" | "Code - Insiders")
+  "Code" | "Code - Insiders" | "Cursor")
     icon_result=":code:"
     ;;
   "Linear")

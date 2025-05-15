@@ -7,12 +7,9 @@
 // from the command palette or from `Zed` application menu.
 
 {
-  "features": {
-    "edit_prediction_provider": "zed"
-  },
   "use_system_path_prompts": false,
   "icon_theme": "Zed (Default)",
-  "agent": {
+  "assistant": {
     "default_profile": "write",
     "default_model": {
       "provider": "google",
@@ -32,7 +29,7 @@
   },
   "edit_predictions": {
     "disabled_globs": [".env"],
-    "enabled_in_text_threads": false
+    "enabled_in_assistant": false
   },
   "edit_predictions_disabled_in": ["comment", "string"],
   "inlay_hints": {

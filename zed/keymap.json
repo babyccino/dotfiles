@@ -8,8 +8,14 @@
       "ctrl-w m": "workspace::ToggleZoom",
       "ctrl-w ctrl-m": "workspace::ToggleZoom",
       "ctrl-c": "menu::Cancel",
-      "cmd-a": "assistant::ToggleFocus",
+      "cmd-a": "agent::ToggleFocus",
       "cmd-b": "workspace::CloseAllDocks"
+    }
+  },
+  {
+    "context": "vim_operator == a || vim_operator == i || vim_operator == cs",
+    "bindings": {
+      "q": "vim::AnyQuotes"
     }
   },
   {
@@ -19,7 +25,7 @@
     }
   },
   {
-    "context": "Editor && (vim_mode == insert ||vim_mode == visual)",
+    "context": "Editor && (vim_mode == insert || vim_mode == visual)",
     "bindings": {
       "ctrl-c": "vim::NormalBefore"
     }
@@ -105,7 +111,10 @@
     "context": "ProjectPanel || CollabPanel || OutlinePanel || ChatPanel || VimControl || EmptyPane || SharedScreen || MarkdownPreview || KeyContextView",
     "bindings": {
       "ctrl-w v": "pane::SplitRight",
-      "ctrl-w ctrl-v": "pane::SplitRight"
+      "ctrl-w ctrl-v": "pane::SplitRight",
+
+      "ctrl-w o": ["pane::CloseInactiveItems", { "close_pinned": false }],
+      "ctrl-w ctrl-o": ["pane::CloseInactiveItems", { "close_pinned": false }]
     }
   },
   {

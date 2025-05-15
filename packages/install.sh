@@ -25,8 +25,3 @@ brew install --cask font-hack-nerd-font
 brew install --cask notunes
 
 go install mvdan.cc/gofumpt@latest
-hi there
-hi there
-hi there
-hi there
-hi there

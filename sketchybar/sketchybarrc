@@ -1,11 +1,15 @@
 #!/bin/bash
 
+# for icons https://www.nerdfonts.com/cheat-sheet
+
 sketchybar --add event aerospace_workspace_change
 
 source "$CONFIG_DIR/colors.sh"
 
 ITEM_DIR="$CONFIG_DIR/items"
 PLUGIN_DIR="$CONFIG_DIR/plugins"
+
+SPOTIFY_EVENT="com.spotify.client.PlaybackStateChanged"
 
 FONT="Hack Nerd Font"
 
@@ -17,7 +21,7 @@ bar=(
   padding_left=10
   padding_right=10
   color=0x00000000
-  notch_width=210
+  notch_width=190
 )
 sketchybar --bar "${bar[@]}"
 
@@ -28,11 +32,11 @@ default=(
   icon.color=$WHITE
   label.font="SF Pro:Bold:12.0"
   label.color=$WHITE
-  background.corner_radius=5
+  background.corner_radius=8
   background.height=26
   background.color="$TRANSPARENT"
-  padding_left=5
-  padding_right=4
+  padding_left=3
+  padding_right=3
   label.padding_left=4
   label.padding_right=10
   icon.padding_left=10
@@ -41,28 +45,44 @@ default=(
 sketchybar --default "${default[@]}"
 
 # -- Left Side Items --
-# sketchybar  --add item front_app q \
 sketchybar \
-  --add item front_app center \
+  --add item front_app q \
   --set front_app icon.font="sketchybar-app-font:Regular:15.0" \
                   script="$PLUGIN_DIR/front_app.sh" \
+                  border_color=$WHITE \
+                  border_width=1 \
   --subscribe front_app front_app_switched
 
 sketchybar --add event aerospace_workspace_change
+
+sketchybar --add event spotify_change $SPOTIFY_EVENT \
+          --add item spotify left \
+          --set spotify \
+          icon=":spotify:"  \
+          icon.font="sketchybar-app-font:Regular:15.0" \
+          background.border_color=$BORDER \
+          background.border_width=1 \
+          icon.y_offset=1 \
+          script="$PLUGIN_DIR/spotify.sh" \
+          align=left \
+          --subscribe spotify spotify_change mouse.clicked
 
 # -- Right Side Items --
 sketchybar \
   --add item clock right \
   --set clock icon="􀐬" \
+              icon.color=0xe8e99eff \
               update_freq=10 \
-              background.border_width=0 \
+              background.border_color=$BORDER \
+              background.border_width=1 \
               script="$PLUGIN_DIR/clock.sh"
 
 sketchybar \
   --add item weather right \
   --set weather icon="􀇃"  \
                 update_freq=600 \
-                background.border_width=0 \
+                background.border_color=$BORDER \
+                background.border_width=1 \
                 script="$PLUGIN_DIR/weather.sh"
 
 source $ITEM_DIR/battery.sh
@@ -72,7 +92,9 @@ sketchybar \
   --set cpu update_freq=2 \
             icon="􀫥" \
             icon.font="sketchybar-app-font:Regular:15.0" \
-            background.border_width=0 \
+            icon.color=0xe8c4ab9d \
+            background.border_color=$BORDER \
+            background.border_width=1 \
             script="$PLUGIN_DIR/cpu.sh" \
             label.align=right \
             label.width=45 \
@@ -83,7 +105,9 @@ sketchybar \
   --set ram update_freq=2 \
             icon="􀫦" \
             icon.font="sketchybar-app-font:Regular:15.0" \
-            background.border_width=0 \
+            icon.color=0xe860bddb \
+            background.border_color=$BORDER \
+            background.border_width=1 \
             script="$PLUGIN_DIR/ram.sh" \
             label.align=right \
             label.width=59 \
@@ -96,6 +120,8 @@ sketchybar \
               script="$PLUGIN_DIR/notifications.sh" \
               click_script="open -a 'Microsoft Teams'" \
               icon="󰊻" \
+              background.border_color=$BORDER \
+              background.border_width=1 \
   --subscribe teams system_woke
 
 sketchybar --update

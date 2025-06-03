@@ -1,6 +1,7 @@
 #!/bin/bash
 
 export WHITE=0xffffffff
+export BORDER=0x808080ff
 
 export ATRANSPARENT="0x00000000"
 export TRANSPARENT="0x44001f30"

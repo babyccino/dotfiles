@@ -11,5 +11,11 @@
 	cmp = "!f() { git add -A && git commit -m \"$@\" && git push; }; f"
 	unc = reset --soft HEAD~1
 	wip = "!git add -A && git commit -m \"wip\""
+	c = checkout
+	m = merge
+	cd = "!git checkout develop-global && git pull"
+	md = "!git fetch && git merge origin/develop-global -m merge"
+	nb = "!f() { git fetch && git checkout -b \"$@\" origin/develop-global; }; f"
+	nbp = "!f() { git fetch && pbpaste | xargs -I % git checkout -b % origin/develop-global; }; f"
 [push]
 	autoSetupRemote = true

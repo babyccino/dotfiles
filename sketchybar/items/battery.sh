@@ -3,7 +3,7 @@ sketchybar --add item battery right \
                  script="$PLUGIN_DIR/battery.sh" \
                  background.border_color=$BORDER \
                  background.border_width=1 \
-                 icon.color=0xe8caae15 \
+                 icon.color=$BATTER_COLOUR \
            --subscribe battery system_woke power_source_change
 
 PERCENTAGE=$(pmset -g batt | grep -Eo "\d+%" | cut -d% -f1)

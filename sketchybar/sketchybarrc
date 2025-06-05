@@ -13,6 +13,11 @@ SPOTIFY_EVENT="com.spotify.client.PlaybackStateChanged"
 
 FONT="Hack Nerd Font"
 
+CLOCK_COLOUR="0xfff6d6ff"
+CPU_COLOUR="0xffa1ffbd"
+RAM_COLOUR="0xffadebff"
+BATTER_COLOUR="0xfffff1a1"
+
 bar=(
   height=32
   blur_radius=30
@@ -49,29 +54,30 @@ sketchybar \
   --add item front_app q \
   --set front_app icon.font="sketchybar-app-font:Regular:15.0" \
                   script="$PLUGIN_DIR/front_app.sh" \
-                  border_color=$WHITE \
-                  border_width=1 \
+                  background.border_color=$BORDER \
+                  background.border_width=1 \
   --subscribe front_app front_app_switched
 
 sketchybar --add event aerospace_workspace_change
 
-sketchybar --add event spotify_change $SPOTIFY_EVENT \
-          --add item spotify left \
-          --set spotify \
-          icon=":spotify:"  \
-          icon.font="sketchybar-app-font:Regular:15.0" \
-          background.border_color=$BORDER \
-          background.border_width=1 \
-          icon.y_offset=1 \
-          script="$PLUGIN_DIR/spotify.sh" \
-          align=left \
-          --subscribe spotify spotify_change mouse.clicked
+sketchybar \
+  --add event spotify_change $SPOTIFY_EVENT \
+  --add item spotify left \
+  --set spotify \
+        icon=":spotify:"  \
+        icon.font="sketchybar-app-font:Regular:15.0" \
+        background.border_color=$BORDER \
+        background.border_width=1 \
+        icon.y_offset=1 \
+        script="$PLUGIN_DIR/spotify.sh" \
+        align=left \
+  --subscribe spotify spotify_change mouse.clicked
 
 # -- Right Side Items --
 sketchybar \
   --add item clock right \
   --set clock icon="􀐬" \
-              icon.color=0xe8e99eff \
+              icon.color=$CLOCK_COLOUR \
               update_freq=10 \
               background.border_color=$BORDER \
               background.border_width=1 \
@@ -92,7 +98,7 @@ sketchybar \
   --set cpu update_freq=2 \
             icon="􀫥" \
             icon.font="sketchybar-app-font:Regular:15.0" \
-            icon.color=0xe8c4ab9d \
+            icon.color=$CPU_COLOUR \
             background.border_color=$BORDER \
             background.border_width=1 \
             script="$PLUGIN_DIR/cpu.sh" \
@@ -100,12 +106,13 @@ sketchybar \
             label.width=45 \
             align=right
 
+
 sketchybar \
   --add item ram right \
   --set ram update_freq=2 \
             icon="􀫦" \
             icon.font="sketchybar-app-font:Regular:15.0" \
-            icon.color=0xe860bddb \
+            icon.color=$RAM_COLOUR \
             background.border_color=$BORDER \
             background.border_width=1 \
             script="$PLUGIN_DIR/ram.sh" \

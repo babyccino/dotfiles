@@ -69,7 +69,7 @@ function icon_map() {
   "Zed" | "Zed Preview")
     icon_result=":zed:"
     ;;
-  "Zen Browser")
+  "Zen Browser" | "Zen")
     icon_result=":zen_browser:"
     ;;
   "TeamSpeak 3")

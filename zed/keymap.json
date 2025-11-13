@@ -113,8 +113,8 @@
       "ctrl-w v": "pane::SplitRight",
       "ctrl-w ctrl-v": "pane::SplitRight",
 
-      "ctrl-w o": ["pane::CloseInactiveItems", { "close_pinned": false }],
-      "ctrl-w ctrl-o": ["pane::CloseInactiveItems", { "close_pinned": false }]
+      "ctrl-w o": ["pane::CloseOtherItems", { "close_pinned": false }],
+      "ctrl-w ctrl-o": ["pane::CloseOtherItems", { "close_pinned": false }]
     }
   },
   {
@@ -176,7 +176,7 @@
     "context": "AssistantPanel",
     "use_key_equivalents": true,
     "bindings": {
-      "ctrl-c": "assistant::ToggleFocus"
+      "ctrl-c": "agent::ToggleFocus"
     }
   },
   {
@@ -194,6 +194,15 @@
       "c": "git::Commit",
       "o": "git::ToggleStaged",
       "shift-o": "git::StageAll"
+      // "s t": ["workspace::SendKeystrokes", "d i t v a t p"] // delete surrounding tag
+    }
+  },
+  {
+    "context": "AgentPanel",
+    "use_key_equivalents": true,
+    "bindings": {
+      "cmd-n": "agent::NewThread",
+      "cmd-t": "agent::NewTextThread"
     }
   }
 ]

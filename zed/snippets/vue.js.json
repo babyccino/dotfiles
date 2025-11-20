@@ -22,9 +22,19 @@
       "</template>"
     ]
   },
-  "i18n": {
-    "prefix": ["i18n", "int"],
+  "internationalisation": {
+    "prefix": ["i18n", "int", "$t"],
     "description": "add i18n",
-    "body": ["{{ $t(\"$0\") }}"]
+    "body": ["{{ t(\"$0\") }}"]
+  },
+  "json": {
+    "prefix": ["json"],
+    "description": "add debug json",
+    "body": ["<Json :json=\"$0\" />"]
+  },
+  "findme": {
+    "prefix": ["findme"],
+    "description": "find me",
+    "body": ["<FindMe />"]
   }
 }

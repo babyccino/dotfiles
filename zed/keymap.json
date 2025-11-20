@@ -1,5 +1,11 @@
 [
   {
+    "context": "Picker > Editor",
+    "bindings": {
+      "ctrl-w": null
+    }
+  },
+  {
     "use_key_equivalents": true,
     "bindings": {
       "cmd-o": "projects::OpenRecent",
@@ -133,6 +139,7 @@
   {
     "context": "vim_mode == insert && !menu",
     "bindings": {
+      "ctrl-w": null,
       "cmd-c": "vim::SwitchToNormalMode"
     }
   },

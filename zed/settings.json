@@ -7,18 +7,47 @@
 // from the command palette or from `Zed` application menu.
 
 {
+  "gutter": {
+    "min_line_number_digits": 1,
+    "line_numbers": true
+  },
+  "active_pane_modifiers": {
+    "border_size": 0.0
+  },
+  "bottom_dock_layout": "contained",
+  "preview_tabs": {
+    "enabled": false
+  },
+  "title_bar": {
+    "show_menus": false,
+    "show_onboarding_banner": true,
+    "show_project_items": true,
+    "show_branch_icon": true
+  },
+  "tab_bar": {
+    "show": true
+  },
+  "toolbar": {
+    "agent_review": false,
+    "selections_menu": false,
+    "quick_actions": false,
+    "breadcrumbs": false
+  },
+  "outline_panel": {
+    "button": false
+  },
   "features": {
     "edit_prediction_provider": "zed"
   },
   "use_system_path_prompts": false,
   "icon_theme": "Zed (Default)",
   "agent": {
+    "always_allow_tool_actions": true,
     "default_profile": "write",
     "default_model": {
       "provider": "google",
-      "model": "gemini-2.0-flash"
+      "model": "gemini-2.5-flash"
     },
-    "version": "2",
     "button": false
   },
   "experimental.theme_overrides": {
@@ -28,6 +57,9 @@
     "git_gutter": "tracked_files"
   },
   "tabs": {
+    "show_close_button": "hidden",
+    "close_position": "right",
+    "file_icons": false,
     "git_status": true
   },
   "edit_predictions": {
@@ -45,7 +77,7 @@
   },
   "vim_mode": true,
   "theme": "Gus 1.0",
-  "relative_line_numbers": true,
+  "relative_line_numbers": "enabled",
   "ui_font_size": 14,
   "buffer_font_size": 13.0,
   "tab_size": 2,
@@ -55,6 +87,11 @@
     "dock": "right"
   },
   "format_on_save": "on",
+  "languages": {
+    "Plain Text": {
+      "show_edit_predictions": false
+    }
+  },
   // "languages": {
   //   "Go": {
   //     "formatter": {
@@ -65,15 +102,6 @@
   //     }
   //   }
   // },
-  "language_overrides": {
-    "TypeScript": {
-      "show_edit_predictions": false
-    },
-    "Rust": {
-      "tab_size": 4,
-      "show_edit_predictions": false
-    }
-  },
   "buffer_font_family": "Hack FC Ligatured",
   "buffer_font_features": {
     "calt": true

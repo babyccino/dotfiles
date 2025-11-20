@@ -11,5 +11,8 @@ watchexec
 neovim
 docker
 atuin
-thefuck
 coreutils
+fastfetch
+jp2a
+lsd
+gemini-cli

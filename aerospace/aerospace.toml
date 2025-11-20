@@ -52,6 +52,14 @@ run = 'layout floating'
 if.app-name-regex-substring = 'quicktime'
 run = 'layout floating'
 
+[[on-window-detected]]
+if.app-name-regex-substring = 'vlc'
+run = 'layout floating'
+
+[[on-window-detected]]
+if.app-name-regex-substring = 'folx'
+run = 'layout floating'
+
 [key-mapping]
 preset = 'qwerty'
 

@@ -13,3 +13,5 @@ thefuck/__*
 yarn
 
 ~
+
+location_cli/.build

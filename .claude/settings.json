@@ -1,0 +1,22 @@
+{
+  "effortLevel": "medium",
+  "permissions": {
+    "allow": [
+      "Bash(pnpm *)",
+      "Bash(p *)",
+      "Bash(git commit *)",
+      "Bash(git add *)",
+      "Bash(git log *)",
+      "Bash(grep *)",
+      "Bash(ls *)",
+      "Bash(tail *)",
+      "Bash(head *)",
+      "Bash(dotnet build *)",
+      "Bash(dotnet test *)",
+      "Bash(dotnet tool ef *)",
+      "Bash(echo *)",
+      "Bash(find *)"
+    ],
+    "deny": ["Bash(git push *)", "Read(./.env)"]
+  }
+}

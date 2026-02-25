@@ -164,12 +164,14 @@
     "context": "ProjectPanel && not_editing",
     "bindings": {
       "n": "project_panel::NewFile",
-      "ctrl-c": "project_panel::ToggleFocus"
+      "ctrl-c": "project_panel::ToggleFocus",
+      "cmd-g": "git_panel::ToggleFocus"
     }
   },
   {
     "context": "GitPanel",
     "bindings": {
+      "cmd-f": "project_panel::ToggleFocus",
       "ctrl-c": "git_panel::ToggleFocus"
     }
   },

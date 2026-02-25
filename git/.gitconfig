@@ -10,23 +10,34 @@
 	unc = reset --soft HEAD~1
 	wip = "!f() { git add -A && git commit -m \"wip $@\"; }; f"
 	tm = "!f() { git add -A && git commit -m \"tm $@\"; }; f"
-	c = checkout
+	s = status
+	f = fetch
+	b = checkout -
+	c = !git fetch && git checkout
+	r = reset
+	rh = reset --hard
 	cm = commit -m
 	cma = "!f() { git add -A && git commit -m \"$@\"; }; f"
 	cmp = "!f() { git add -A && git commit -m \"$@\" && git push; }; f"
 	cmpa = "!git add -A && git commit --amend --no-edit && git push --force"
 	m = merge
 	p = push
-	pf = push --force
+	fp = "!git fetch && git pull"
+	pushf = push --force
 	pullr = "!git fetch && git pull --rebase=false"
+	cr = "!f() { git fetch && git checkout -b \"$@\" \"origin/$@\"; }; f"
+	crp = "!f() { git fetch && git checkout -b \"$@\" \"origin/$@\"; }; f \"$(pbpaste)\""
 	cd = checkout develop-global
 	cod = checkout origin/develop-global
 	md = "!git fetch && git merge origin/develop-global -m merge"
+	mm = "!git fetch && git merge origin/master -m merge"
+	mn = "!git fetch && git merge origin/main -m merge"
 	mo = "!f() { BRANCH=$(git branch --show-current); echo \"Merging origin/$BRANCH into current branch\"; git fetch && git merge \"origin/$BRANCH\" -m merge; }; f"
 	nb = "!f() { git fetch && git checkout -b \"$@\" origin/develop-global; git push; }; f"
 	nbp = "!f() { git fetch && pbpaste | xargs -I % git checkout -b % origin/develop-global; git push; }; f"
 	nbm = "!f() { git fetch && git checkout -b \"$@\" origin/master; git push; }; f"
 	nbmp = "!f() { git fetch && pbpaste | xargs -I % git checkout -b % origin/master; git push; }; f"
+	ln = log -n
 [push]
 	autoSetupRemote = true
 	default = current

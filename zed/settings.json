@@ -7,64 +7,65 @@
 // from the command palette or from `Zed` application menu.
 
 {
+  "hard_tabs": false,
+  "show_edit_predictions": true,
   "gutter": {
     "min_line_number_digits": 1,
-    "line_numbers": true
+    "line_numbers": true,
   },
   "active_pane_modifiers": {
-    "border_size": 0.0
+    "border_size": 0.0,
   },
   "bottom_dock_layout": "contained",
   "preview_tabs": {
-    "enabled": false
+    "enabled": false,
   },
   "title_bar": {
     "show_menus": false,
     "show_onboarding_banner": true,
     "show_project_items": true,
-    "show_branch_icon": true
   },
   "tab_bar": {
-    "show": true
+    "show": true,
   },
   "toolbar": {
     "agent_review": false,
     "selections_menu": false,
     "quick_actions": false,
-    "breadcrumbs": false
+    "breadcrumbs": false,
   },
   "outline_panel": {
-    "button": false
-  },
-  "features": {
-    "edit_prediction_provider": "zed"
+    "button": false,
   },
   "use_system_path_prompts": false,
   "icon_theme": "Zed (Default)",
   "agent": {
-    "always_allow_tool_actions": true,
+    "tool_permissions": {
+      "default": "allow"
+    },
     "default_profile": "write",
     "default_model": {
       "provider": "google",
-      "model": "gemini-2.5-flash"
+      "model": "gemini-2.5-flash",
     },
-    "button": false
+    "button": false,
   },
   "experimental.theme_overrides": {
-    "background.appearance": "blurred"
+    "background.appearance": "blurred",
   },
   "git": {
-    "git_gutter": "tracked_files"
+    "git_gutter": "tracked_files",
   },
   "tabs": {
     "show_close_button": "hidden",
     "close_position": "right",
     "file_icons": false,
-    "git_status": true
+    "git_status": true,
   },
   "edit_predictions": {
+    "provider": "zed",
     "disabled_globs": [".env"],
-    "enabled_in_text_threads": false
+    "enabled_in_text_threads": false,
   },
   "edit_predictions_disabled_in": ["comment", "string"],
   "inlay_hints": {
@@ -73,7 +74,7 @@
     "show_parameter_hints": true,
     "show_other_hints": true,
     "edit_debounce_ms": 700,
-    "scroll_debounce_ms": 50
+    "scroll_debounce_ms": 50,
   },
   "vim_mode": true,
   "theme": "Gus 1.0",
@@ -84,13 +85,19 @@
   "terminal": {
     "font_family": "Menlo",
     "font_size": 13,
-    "dock": "right"
+    "dock": "right",
   },
   "format_on_save": "on",
   "languages": {
     "Plain Text": {
-      "show_edit_predictions": false
-    }
+      "show_edit_predictions": false,
+    },
+    "Rust": {
+      "tab_size": 4,
+    },
+    "CSharp": {
+      "tab_size": 4,
+    },
   },
   // "languages": {
   //   "Go": {
@@ -104,7 +111,7 @@
   // },
   "buffer_font_family": "Hack FC Ligatured",
   "buffer_font_features": {
-    "calt": true
+    "calt": true,
   },
   "ui_font_family": "SF Pro",
   "lsp": {
@@ -117,9 +124,15 @@
           "constantValues": true,
           "functionTypeParameters": true,
           "parameterNames": true,
-          "rangeVariableTypes": true
-        }
-      }
-    }
-  }
+          "rangeVariableTypes": true,
+        },
+      },
+    },
+    "omnisharp": {
+      "binary": {
+        "path": "/path/to/OmniSharp",
+        "arguments": ["optional", "additional", "args", "-lsp"],
+      },
+    },
+  },
 }

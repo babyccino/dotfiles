@@ -15,6 +15,8 @@
 	b = checkout -
 	c = !git fetch && git checkout
 	r = reset
+	cp = cherry-pick
+	latest = !git branch --list --sort=-committerdate | head -n 10
 	rh = reset --hard
 	cm = commit -m
 	cma = "!f() { git add -A && git commit -m \"$@\"; }; f"
@@ -29,7 +31,10 @@
 	crp = "!f() { git fetch && git checkout -b \"$@\" \"origin/$@\"; }; f \"$(pbpaste)\""
 	cd = checkout develop-global
 	cod = checkout origin/develop-global
+	cdv = checkout develop
+	codv = checkout origin/develop
 	md = "!git fetch && git merge origin/develop-global -m merge"
+	mdv = "!git fetch && git merge origin/develop -m merge"
 	mm = "!git fetch && git merge origin/master -m merge"
 	mn = "!git fetch && git merge origin/main -m merge"
 	mo = "!f() { BRANCH=$(git branch --show-current); echo \"Merging origin/$BRANCH into current branch\"; git fetch && git merge \"origin/$BRANCH\" -m merge; }; f"

@@ -6,10 +6,19 @@ zed/embeddings
 zed/prompts
 zed/conversations
 
+zsh/.env
+
 gh
 
 thefuck/__*
 
 yarn
 
+StardewValley
+
 ~
+configstore
+
+# secrets and machine state
+grafana-mcp/token
+homebrew

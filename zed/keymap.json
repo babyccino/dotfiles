@@ -2,12 +2,13 @@
   {
     "context": "Picker > Editor",
     "bindings": {
-      "ctrl-w": null
-    }
+      "ctrl-w": null,
+    },
   },
   {
     "use_key_equivalents": true,
     "bindings": {
+      "cmd-,": "zed::OpenSettingsFile",
       "cmd-o": "projects::OpenRecent",
       "cmd-q": null,
       "cmd-q cmd-q": "zed::Quit",
@@ -15,32 +16,33 @@
       "ctrl-w ctrl-m": "workspace::ToggleZoom",
       "ctrl-c": "menu::Cancel",
       "cmd-a": "agent::ToggleFocus",
-      "cmd-b": "workspace::CloseAllDocks"
-    }
+      "cmd-b": "workspace::CloseAllDocks",
+    },
   },
   {
     "context": "vim_operator == a || vim_operator == i || vim_operator == cs",
     "bindings": {
-      "q": "vim::AnyQuotes"
-    }
+      "q": "vim::AnyQuotes",
+    },
   },
   {
     "context": "Editor",
     "bindings": {
-      "ctrl-c": "editor::Cancel"
-    }
+      "ctrl-c": "editor::Cancel",
+      "cmd-;": null,
+    },
   },
   {
     "context": "Editor && (vim_mode == insert || vim_mode == visual)",
     "bindings": {
-      "ctrl-c": "vim::NormalBefore"
-    }
+      "ctrl-c": "vim::NormalBefore",
+    },
   },
   {
     "context": "Editor && mode == single_line",
     "bindings": {
-      "ctrl-c": "editor::Cancel"
-    }
+      "ctrl-c": "editor::Cancel",
+    },
   },
   {
     "context": "Editor && !menu",
@@ -51,14 +53,14 @@
       "cmd-f": "project_panel::ToggleFocus",
       "cmd-g": "git_panel::ToggleFocus",
       "cmd-[": "pane::ActivatePreviousItem",
-      "cmd-]": "pane::ActivateNextItem"
-    }
+      "cmd-]": "pane::ActivateNextItem",
+    },
   },
   {
     "context": "Editor && showing_completions",
     "bindings": {
-      "enter": "editor::ConfirmCompletion"
-    }
+      "enter": "editor::ConfirmCompletion",
+    },
   },
   {
     "context": "VimControl && !menu",
@@ -90,28 +92,28 @@
       "z 9": ["editor::FoldAtLevel", 9],
 
       "g f": "file_finder::Toggle",
-      "g r": "editor::FindAllReferences"
-    }
+      "g r": "editor::FindAllReferences",
+    },
   },
   {
     "context": "ProjectSearchView",
     "bindings": {
       "n": "search::ToggleReplace",
-      "shift-n": "search::ToggleReplace"
-    }
+      "shift-n": "search::ToggleReplace",
+    },
   },
   {
     "context": "BufferSearchBar",
     "bindings": {
-      "ctrl-c": "buffer_search::Dismiss"
-    }
+      "ctrl-c": "buffer_search::Dismiss",
+    },
   },
   {
     "context": "Pane",
     "bindings": {
       "cmd-{": "editor::Outdent",
-      "cmd-}": "editor::Indent"
-    }
+      "cmd-}": "editor::Indent",
+    },
   },
   {
     "context": "ProjectPanel || CollabPanel || OutlinePanel || ChatPanel || VimControl || EmptyPane || SharedScreen || MarkdownPreview || KeyContextView",
@@ -120,28 +122,28 @@
       "ctrl-w ctrl-v": "pane::SplitRight",
 
       "ctrl-w o": ["pane::CloseOtherItems", { "close_pinned": false }],
-      "ctrl-w ctrl-o": ["pane::CloseOtherItems", { "close_pinned": false }]
-    }
+      "ctrl-w ctrl-o": ["pane::CloseOtherItems", { "close_pinned": false }],
+    },
   },
   {
     "context": "VimControl && !menu",
     "bindings": {
-      "/": ["vim::Search", { "regex": false }]
-    }
+      "/": ["vim::Search", { "regex": false }],
+    },
   },
   {
     "context": "vim_mode == normal && !menu",
     "bindings": {
       "shift-y": ["workspace::SendKeystrokes", "y $"],
-      "enter": ["workspace::SendKeystrokes", "o escape"]
-    }
+      "enter": ["workspace::SendKeystrokes", "o escape"],
+    },
   },
   {
     "context": "vim_mode == insert && !menu",
     "bindings": {
       "ctrl-w": null,
-      "cmd-c": "vim::SwitchToNormalMode"
-    }
+      "cmd-c": "vim::SwitchToNormalMode",
+    },
   },
   {
     "context": "vim_mode == visual && !menu",
@@ -150,50 +152,50 @@
       "cmd-c": "vim::SwitchToNormalMode",
       "[": "editor::SelectLargerSyntaxNode",
       "]": "editor::SelectSmallerSyntaxNode",
-      "alt-;": "editor::SplitSelectionIntoLines"
-    }
+      "alt-;": "editor::SplitSelectionIntoLines",
+    },
   },
   {
     "context": "(vim_mode == normal || vim_mode == visual) && !menu",
     "bindings": {
       "ctrl-h": "vim::StartOfLineDownward",
-      "ctrl-l": "vim::EndOfLine"
-    }
+      "ctrl-l": "vim::EndOfLine",
+    },
   },
   {
     "context": "ProjectPanel && not_editing",
     "bindings": {
       "n": "project_panel::NewFile",
       "ctrl-c": "project_panel::ToggleFocus",
-      "cmd-g": "git_panel::ToggleFocus"
-    }
+      "cmd-g": "git_panel::ToggleFocus",
+    },
   },
   {
     "context": "GitPanel",
     "bindings": {
       "cmd-f": "project_panel::ToggleFocus",
-      "ctrl-c": "git_panel::ToggleFocus"
-    }
+      "ctrl-c": "git_panel::ToggleFocus",
+    },
   },
   {
     "context": "GitPanel && ChangesList",
     "bindings": {
-      "z": "git::RestoreFile"
-    }
+      "z": "git::RestoreFile",
+    },
   },
   {
     "context": "AssistantPanel",
     "use_key_equivalents": true,
     "bindings": {
-      "ctrl-c": "agent::ToggleFocus"
-    }
+      "ctrl-c": "agent::ToggleFocus",
+    },
   },
   {
     "context": "Editor",
     "use_key_equivalents": true,
     "bindings": {
-      "alt-n": "editor::AcceptEditPrediction"
-    }
+      "alt-n": "editor::AcceptEditPrediction",
+    },
   },
   {
     "context": "vim_operator == d",
@@ -202,16 +204,15 @@
       "shift-p": "git::RestoreFile",
       "c": "git::Commit",
       "o": "git::ToggleStaged",
-      "shift-o": "git::StageAll"
+      "shift-o": "git::StageAll",
       // "s t": ["workspace::SendKeystrokes", "d i t v a t p"] // delete surrounding tag
-    }
+    },
   },
   {
     "context": "AgentPanel",
     "use_key_equivalents": true,
     "bindings": {
       "cmd-n": "agent::NewThread",
-      "cmd-t": "agent::NewTextThread"
-    }
-  }
+    },
+  },
 ]

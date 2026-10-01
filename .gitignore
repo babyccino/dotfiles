@@ -22,3 +22,5 @@ configstore
 # secrets and machine state
 grafana-mcp/token
 homebrew
+
+location_cli/.build
